@@ -1,4 +1,4 @@
-/* ----------- Generales ----------- */
+/* ----------- Globales ----------- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +27,7 @@ header {
   text-transform: uppercase;
 }
 
-/* ----------- Barra de navegación ----------- */
+/* ----------- Navegación ----------- */
 nav {
   background-color: #333;
   padding: 0.5em 1em;
@@ -66,7 +66,7 @@ nav ul li a:hover {
   transition: width 0.4s ease-in-out;
 }
 
-/* ----------- Secciones ----------- */
+/* ----------- Secciones del formulario ----------- */
 main {
   flex-grow: 1;
   padding: 2em;
@@ -82,7 +82,7 @@ main {
   display: none;
 }
 
-/* ----------- Títulos ----------- */
+/* ----------- Títulos y descripciones ----------- */
 h2 {
   font-size: 1.8em;
   color: #4d4c85;
@@ -120,7 +120,6 @@ h2 {
   font-weight: bold;
 }
 
-/* Contenido dentro del botón */
 .opcion .etiqueta {
   font-weight: 600;
   font-size: 1.1em;
@@ -131,13 +130,13 @@ h2 {
   color: #888;
 }
 
-/* Si el botón está seleccionado */
 .opcion.selected {
   background-color: #75bfd3;
   border-color: #75bfd3;
   color: white;
 }
 
+/* ----------- Botón de continuar ----------- */
 .boton-continuar {
   background-color: #4d4c85;
   color: white;
@@ -229,6 +228,7 @@ footer {
   transform: scale(0.9);
 }
 
+/* ----------- Responsivo ----------- */
 @media (max-width: 600px) {
   .opcion {
     flex-direction: column;
@@ -242,3 +242,40 @@ footer {
   }
 }
 
+/* ----------- Progreso circular (Paso 6) ----------- */
+.contenedor-circular {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 2em auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.fondo {
+  stroke: #eee;
+}
+
+.progreso {
+  stroke: #4d4c85;
+  stroke-dasharray: 314; /* 2πr con r = 50 */
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.porcentaje {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+}
