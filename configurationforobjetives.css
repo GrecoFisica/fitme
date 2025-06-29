@@ -267,7 +267,7 @@ circle {
   stroke: #4d4c85;
   stroke-dasharray: 314; /* 2πr con r = 50 */
   stroke-dashoffset: 314;
-  transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1.5s linear;
 }
 
 .porcentaje {
