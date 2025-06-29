@@ -1,149 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head> 
-      <meta charset="utf-8">
-      <title>FitMe - Registro</title>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="configurationforobjetives.css"/>
-      <script src="opcionesrp.js" defer></script>
+<head> 
+  <meta charset="utf-8">
+  <title>FitMe - Registro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="configurationforobjetives.css"/>
+  <script src="opcionesrp.js" defer></script>
+</head> 
+<body>
 
-    </head> 
-    <body>
+  <header>
+    <h1>fitme</h1>
+  </header>
+    
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
 
-      <header>
-        <h1>fitme</h1>
-      </header>
-        
-      <div class="progress-bar-container">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
+  <nav>
+    <ul>
+      <li><a href="sobre.jsp">Nosotros</a></li>       
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="login.jsp">Iniciar Sesión</a></li>
+    </ul>
+  </nav>
+    
+  <main>
+    <form action="registryprocess.html" method="post" id="registroForm">
 
-      <nav>
-        <ul>
-          <li><a href="sobre.jsp">Nosotros  </a></li>       
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="login.jsp">Iniciar Sesión</a></li>
-        </ul>
-      </nav>
-        
-        <main>
-            <form action="registryprocess.html" method="post" id="registroForm">
+      <!-- Paso 1 -->
+      <section id="paso1" class="seccion">
+        <h2>¿Cuál es tu objetivo?</h2>
+        <p class="descripcion">Calcularemos tus calorías necesarias para lograrlo</p>
 
-              <section id="paso1" class="seccion">
-                <h2>¿Cuál es tu objetivo?</h2>
-                <p class="descripcion">Calcularemos tus calorías necesarias para lograrlo</p>
-
-                <button type="button" class="opcion" data-valor="Perder Grasa">
-                  <div>
-                    <div class="etiqueta">Perder Grasa</div>
-                    <div class="detalle">Optimiza la pérdida de peso y conserva tu masa muscular</div>
-                  </div>
-                </button>
-
-                <button type="button" class="opcion" data-valor="Ganar Músculo">
-                  <div>
-                    <div class="etiqueta">Ganar Músculo</div>
-                    <div class="detalle">Incrementa tu peso y hazte más fuerte</div>
-                  </div>
-                </button>
-
-                <button type="button" class="opcion" data-valor="Mantener Peso">
-                  <div>
-                    <div class="etiqueta">Mantener Peso</div>
-                    <div class="detalle">Mantén tu peso estable y busca la recomposición corporal</div>
-                  </div>
-                </button>
-              </section>
-
-              <section id="paso2" class="seccion hidden">
-                <h2>Sobre ti</h2>
-                <p class="descripcion">Esta información nos ayudará a calcular tus calorías objetivo</p>
-
-                <button type="button" class="opcion">Sexo <span>Seleccionar ➤</span></button>
-                <button type="button" class="opcion">Edad <span>Seleccionar ➤</span></button>
-                <button type="button" class="opcion">Altura <span>Seleccionar ➤</span></button>
-                <button type="button" class="opcion">Peso <span>Seleccionar ➤</span></button>
-                
-                <button type="button" id="continuarPaso2" class="boton-continuar">Continuar ➤</button>
-
-              </section>
-              
-              <section id="paso3" class="seccion">
-                <h2>¿Cuál es tu nievel de actividad física?</h2>
-
-                <button type="button" class="opcion" data-valor="Sedentario">
-                  <div>
-                    <div class="etiqueta">Sedentario</div>
-                    <div class="detalle">Poco a nada de ejercicio</div>
-                  </div>
-                </button>
-
-                <button type="button" class="opcion" data-valor="Ligeramente Activo">
-                  <div>
-                    <div class="etiqueta">Ligeramente Activo</div>
-                    <div class="detalle">Ejercicio 2 a 3 días por semana</div>
-                  </div>
-                </button>
-
-                <button type="button" class="opcion" data-valor="Moderadamente Activo">
-                  <div>
-                    <div class="etiqueta">Moderadamente Activo</div>
-                    <div class="detalle">Ejercicio 4 a 5 días por semana</div>
-                  </div>
-                </button>
-                
-                <button type="button" class="opcion" data-valor="Muy Activo">
-                  <div>
-                    <div class="etiqueta">Muy Activo</div>
-                    <div class="detalle">Ejercicio 6 a 7 días por semana</div>
-                  </div>
-                </button>
-              </section>
-                
-              <section id="paso4" class="seccion">
-                <h2>¿Realizas entrenamiento de fuerza?</h2>
-
-                <button type="button" class="opcion" data-valor="Si Entrena Fuerza">
-                  <div>
-                    <div class="etiqueta">Si</div>
-                  </div>
-                </button>
-                
-                <button type="button" class="opcion" data-valor="No Entrena Fuerza">
-                  <div>
-                    <div class="etiqueta">No</div>
-                  </div>
-                </button>
-              </section>
-                
-              <section id="paso5" class="seccion hidden">
-                <h2>Personaliza tu Objetivo</h2>
-                <p class="descripcion">Esta información nos ayudará a calcular tus calorías objetivo</p>
-
-                <button type="button" class="opcion">Peso Actual <span>Seleccionar ➤</span></button>
-                <button type="button" class="opcion">Peso Deseado<span>Seleccionar ➤</span></button>
-                <h3>Se tomará una velocidad progresiva para alcanzar el peso deseado</h3>
-              </section>
-
-              <input type="hidden" name="objetivo" id="inputObjetivo">
-
-            </form>
-         </main>
-        
-      <footer>
-        &copy; 2025 FitMe<br>
-      </footer>
-        <!-- Modal emergente -->
-        <div id="modal" class="modal hidden">
-          <div class="modal-content">
-            <h3 id="modalTitle">Título</h3>
-            <input type="text" id="modalInput" placeholder="Escribe aquí...">
-            <div class="modal-actions">
-              <button id="modalCancel">Cancelar</button>
-              <button id="modalSave">Guardar</button>
-            </div>
+        <button type="button" class="opcion" data-valor="Perder Grasa">
+          <div>
+            <div class="etiqueta">Perder Grasa</div>
+            <div class="detalle">Optimiza la pérdida de peso y conserva tu masa muscular</div>
           </div>
-        </div>
+        </button>
 
-    </body>
+        <button type="button" class="opcion" data-valor="Ganar Músculo">
+          <div>
+            <div class="etiqueta">Ganar Músculo</div>
+            <div class="detalle">Incrementa tu peso y hazte más fuerte</div>
+          </div>
+        </button>
+
+        <button type="button" class="opcion" data-valor="Mantener Peso">
+          <div>
+            <div class="etiqueta">Mantener Peso</div>
+            <div class="detalle">Mantén tu peso estable y busca la recomposición corporal</div>
+          </div>
+        </button>
+
+      </section>
+
+      <!-- Paso 2 -->
+      <section id="paso2" class="seccion hidden">
+        <h2>Sobre ti</h2>
+        <p class="descripcion">Esta información nos ayudará a calcular tus calorías objetivo</p>
+
+        <button type="button" class="opcion">Sexo <span>Seleccionar ➤</span></button>
+        <button type="button" class="opcion">Edad <span>Seleccionar ➤</span></button>
+        <button type="button" class="opcion">Altura <span>Seleccionar ➤</span></button>
+        <button type="button" class="opcion">Peso <span>Seleccionar ➤</span></button>
+        
+        <button type="button" class="boton-continuar">Continuar ➤</button>
+      </section>
+
+      <!-- Paso 3 -->
+      <section id="paso3" class="seccion hidden">
+        <h2>¿Cuál es tu nivel de actividad física?</h2>
+
+        <button type="button" class="opcion" data-valor="Sedentario">
+          <div>
+            <div class="etiqueta">Sedentario</div>
+            <div class="detalle">Poco a nada de ejercicio</div>
+          </div>
+        </button>
+
+        <button type="button" class="opcion" data-valor="Ligeramente Activo">
+          <div>
+            <div class="etiqueta">Ligeramente Activo</div>
+            <div class="detalle">Ejercicio 2 a 3 días por semana</div>
+          </div>
+        </button>
+
+        <button type="button" class="opcion" data-valor="Moderadamente Activo">
+          <div>
+            <div class="etiqueta">Moderadamente Activo</div>
+            <div class="detalle">Ejercicio 4 a 5 días por semana</div>
+          </div>
+        </button>
+        
+        <button type="button" class="opcion" data-valor="Muy Activo">
+          <div>
+            <div class="etiqueta">Muy Activo</div>
+            <div class="detalle">Ejercicio 6 a 7 días por semana</div>
+          </div>
+        </button>
+
+      </section>
+
+      <!-- Paso 4 -->
+      <section id="paso4" class="seccion hidden">
+        <h2>¿Realizas entrenamiento de fuerza?</h2>
+
+        <button type="button" class="opcion" data-valor="Si Entrena Fuerza">
+          <div><div class="etiqueta">Sí</div></div>
+        </button>
+        
+        <button type="button" class="opcion" data-valor="No Entrena Fuerza">
+          <div><div class="etiqueta">No</div></div>
+        </button>
+
+      </section>
+
+      <!-- Paso 5 -->
+      <section id="paso5" class="seccion hidden">
+        <h2>Personaliza tu Objetivo</h2>
+        <p class="descripcion">Esta información nos ayudará a calcular tus calorías objetivo</p>
+
+        <button type="button" class="opcion">Peso Actual <span>Seleccionar ➤</span></button>
+        <button type="button" class="opcion">Peso Deseado <span>Seleccionar ➤</span></button>
+
+        <h3>Se tomará una velocidad progresiva para alcanzar el peso deseado</h3>
+
+        <button type="button" class="boton-continuar">Continuar ➤</button>
+      </section>
+
+      <!-- Paso 6 -->
+      <section id="paso6" class="seccion hidden">
+        <h2>Formulario Finalizado</h2>
+        <p class="descripcion">Esta información nos ayudará a hacer un mejor plan para ti</p>
+
+        <div class="contenedor-circular">
+          <svg class="progreso-circular" width="120" height="120">
+            <circle class="fondo" cx="60" cy="60" r="50"/>
+            <circle class="progreso" cx="60" cy="60" r="50"/>
+          </svg>
+          <span class="porcentaje">0%</span>
+        </div>
+      </section>
+
+      <input type="hidden" name="objetivo" id="inputObjetivo">
+
+    </form>
+  </main>
+
+  <footer>
+    &copy; 2025 FitMe<br>
+  </footer>
+
+  <!-- Modal emergente -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modalTitle">Título</h3>
+      <input type="text" id="modalInput" placeholder="Escribe aquí...">
+      <div class="modal-actions">
+        <button id="modalCancel">Cancelar</button>
+        <button id="modalSave">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>
