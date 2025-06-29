@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalCancel = document.getElementById("modalCancel");
   const modalSave = document.getElementById("modalSave");
 
-  const btnContinuarPaso2 = document.getElementById("continuarPaso2");
-
   let pasoActual = 0;
   let botonActual = null;
 
@@ -32,31 +30,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mostrarPaso(pasoActual);
 
-  // Escucha clics en botones de opciones
+  // Manejo de botones de opción
   document.querySelectorAll(".opcion").forEach(boton => {
     boton.addEventListener("click", () => {
       const esSeleccionDirecta = boton.dataset.valor !== undefined;
 
-      // Resalta el botón seleccionado
-      const botonesGrupo = boton.parentElement.querySelectorAll(".opcion");
+      // Quitar selección de otros botones en el mismo paso
+      const seccion = boton.closest(".seccion");
+      const botonesGrupo = seccion.querySelectorAll(".opcion");
       botonesGrupo.forEach(b => b.classList.remove("selected"));
       boton.classList.add("selected");
 
       if (esSeleccionDirecta) {
         const valor = boton.dataset.valor;
 
-        // Guardar el objetivo si estamos en paso 0
+        // Guardar el objetivo en paso 1
         if (pasoActual === 0 && inputObjetivo) {
           inputObjetivo.value = valor;
         }
 
-        // Avanzar solo si no estamos en paso 2
-        if (pasoActual !== 1) {
+        // Solo avanzar automáticamente en pasos específicos
+        if ([0, 2, 3].includes(pasoActual)) {
           avanzarPaso();
         }
 
       } else {
-        // Es una opción con entrada personalizada, abrimos el modal
+        // Modal para entrada personalizada
         botonActual = boton;
         modalTitle.textContent = boton.textContent.split(" ")[0];
         modalInput.value = "";
@@ -65,12 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Botón Cancelar del modal
+  // Modal - cancelar
   modalCancel.addEventListener("click", () => {
     modal.classList.add("hidden");
   });
 
-  // Botón Guardar del modal
+  // Modal - guardar
   modalSave.addEventListener("click", () => {
     const valor = modalInput.value.trim();
     if (valor !== "" && botonActual) {
@@ -78,14 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
       botonActual.classList.add("selected");
       modal.classList.add("hidden");
 
-      // NO avanzar si estamos en paso 2
-      if (pasoActual !== 1) {
+      // Solo avanzar automáticamente si no estamos en paso 2 o 5
+      if (![1, 4].includes(pasoActual)) {
         avanzarPaso();
       }
     }
   });
 
-  // Enter para guardar en el modal
+  // Guardar con Enter
   modalInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -93,12 +92,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Botón "Continuar" en paso 2
-  if (btnContinuarPaso2) {
-    btnContinuarPaso2.addEventListener("click", () => {
-      if (pasoActual === 1) {
-        avanzarPaso();
+  // Botones "Continuar"
+  document.querySelectorAll(".boton-continuar").forEach(boton => {
+    boton.addEventListener("click", () => {
+      avanzarPaso();
+    });
+  });
+});
+
+// Animación de circunferencia en paso final
+document.addEventListener("DOMContentLoaded", () => {
+  const progreso = document.querySelector(".progreso");
+  const porcentaje = document.querySelector(".porcentaje");
+
+  let valorFinal = 100; // Cambia este valor si deseas otro porcentaje final
+  let valorActual = 0;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        let intervalo = setInterval(() => {
+          if (valorActual <= valorFinal) {
+            let offset = 314 - (314 * valorActual) / 100;
+            progreso.style.strokeDashoffset = offset;
+            porcentaje.textContent = `${valorActual}%`;
+            valorActual++;
+          } else {
+            clearInterval(intervalo);
+          }
+        }, 20);
       }
     });
-  }
+  }, { threshold: 0.5 });
+
+  observer.observe(document.querySelector(".contenedor-circular"));
 });
