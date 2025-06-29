@@ -1,0 +1,217 @@
+/* ----------- Generales ----------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----------- Encabezado ----------- */
+header {
+  background-color: #4d4c85;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+/* ----------- Barra de navegación ----------- */
+nav {
+  background-color: #333;
+  padding: 0.5em 1em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #75bfd3;
+}
+
+/* ----------- Barra de progreso ----------- */
+.progress-bar-container {
+  height: 8px;
+  width: 100%;
+  background-color: #e0e0e0;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4d4c85;
+  transition: width 0.4s ease-in-out;
+}
+
+/* ----------- Secciones ----------- */
+main {
+  flex-grow: 1;
+  padding: 2em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.seccion {
+  margin-bottom: 3em;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ----------- Títulos ----------- */
+h2 {
+  font-size: 1.8em;
+  color: #4d4c85;
+  margin-bottom: 0.5em;
+}
+
+.descripcion {
+  margin-bottom: 1.5em;
+  color: #666;
+}
+
+/* ----------- Botones de opción ----------- */
+.opcion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 2px solid #4d4c85;
+  color: #4d4c85;
+  border-radius: 12px;
+  padding: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opcion:hover {
+  background-color: #4d4c85;
+  color: white;
+}
+
+.opcion span {
+  font-weight: bold;
+}
+
+/* Contenido dentro del botón */
+.opcion .etiqueta {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.opcion .detalle {
+  font-size: 0.9em;
+  color: #888;
+}
+
+/* Si el botón está seleccionado */
+.opcion.selected {
+  background-color: #75bfd3;
+  border-color: #75bfd3;
+  color: white;
+}
+
+/* ----------- Footer ----------- */
+footer {
+  background-color: #4d4c85;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+/* ----------- Modal ----------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2em;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 1em;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1.5em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-actions button {
+  padding: 0.6em 1.2em;
+  margin: 0 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#modalCancel {
+  background-color: #ccc;
+}
+
+#modalSave {
+  background-color: #4d4c85;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .opcion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+  }
+}
